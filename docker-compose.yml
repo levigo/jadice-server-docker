@@ -1,0 +1,34 @@
+version: '2'
+services:
+  js-amq:
+    build: .
+    environment:
+      - spring.profiles.active=embedded-activemq-broker
+    ports:
+      - "61616:61616"
+  js-convert:
+    build: .
+    environment:
+      - spring.profiles.active=conversion,activemq-client
+      - jadice.server.activemq-host=js-amq
+    depends_on:
+      - js-amq
+  js-webservice:
+    build: .
+    environment:
+      - spring.profiles.active=activemq-client,webservice
+      - jadice.server.activemq-host=js-amq
+    depends_on:
+      - js-amq
+    command: >
+      /bin/bash -c "
+        while ! nc -z js-amq 61616;
+        do
+          echo sleeping;
+          sleep 1;
+        done;
+        echo Connected!;
+      "
+    ports:
+      - "9000:9000"
+# https://docs.docker.com/compose/startup-order/
