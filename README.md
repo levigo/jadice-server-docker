@@ -9,7 +9,7 @@
 1. [docker-compose](#docker-compose)
 
 ## Introduction
-This repository contains a `Dockerfile` for building Docker-Images containing the levigo [_jadice server_](https://jadice.com/index.php/de/uebersicht-51.html).
+This repository contains a `Dockerfile` for building a docker image containing the levigo [_jadice server_](https://jadice.com/index.php/de/uebersicht-51.html).
 It is provided "as is", see [LICENSE.md](https://github.com/levigo/jadice-server-docker/blob/master/LICENSE.md).
 The image is based on openjdk:7u121-jre-alpine.
 
