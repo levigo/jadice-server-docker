@@ -1,12 +1,10 @@
-FROM openjdk:8u111-jre-alpine
+FROM openjdk:8u121-jre
 
 MAINTAINER levigo solutions gmbh
 
 ADD resources/jadice-server*.zip /tmp/jadice-server.zip
 
-RUN apk update && \
-    apk add bash && \
-    mkdir /opt/ && \
+RUN apt-get update && \
     mkdir /opt/jadice-server && \
     unzip -q /tmp/jadice-server.zip -d /opt/jadice-server/
 
