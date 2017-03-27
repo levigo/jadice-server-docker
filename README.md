@@ -1,5 +1,7 @@
 # levigo _jadice server_ Docker Container
 
+![jadice server & docker](js_docker.jpeg)
+
 # Table of Contents
 1. [Introduction](#introduction)
 1. [Requirements](#requirements)
