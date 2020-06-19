@@ -1,7 +1,5 @@
 FROM openjdk:8u252-jre as build-container
 
-MAINTAINER levigo solutions gmbh
-
 ADD resources/jadice-server*.zip /tmp/jadice-server.zip
  
 RUN mkdir /opt/jadice-server && \
@@ -28,5 +26,7 @@ FROM openjdk:8u252-jre
 COPY --from=build-container /opt/jadice-server /opt/jadice-server
  
 ENTRYPOINT /opt/jadice-server/bin/jadice-server.sh
- 
+
+LABEL maintainer="levigo solutions GmbH "
+
 EXPOSE 61616
