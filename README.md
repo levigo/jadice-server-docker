@@ -13,7 +13,7 @@
 ## Introduction
 This repository contains a `Dockerfile` for building a docker image containing the levigo [_jadice server_](https://jadice.com/index.php/de/uebersicht-51.html).
 It is provided "as is", see [LICENSE.md](https://github.com/levigo/jadice-server-docker/blob/master/LICENSE.md).
-The image is based on openjdk:8u121-jre.
+The image is based on [openjdk:8u265-jre-buster](https://hub.docker.com/_/openjdk). You can replace it with the JRE distribution of your choice. 
 
 ## Requirements
 You need version 5.5 or newer of the _jadice server_ distribution to use _jadice server_ in a docker container. For more information on how to get the _jadice server_ distribution visit [jadice.com](https://www.jadice.com).
