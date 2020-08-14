@@ -11,13 +11,16 @@
 1. [docker-compose](#docker-compose)
 
 ## Introduction
-This repository contains a `Dockerfile` for building a docker image containing the levigo [_jadice server_](https://jadice.com/index.php/de/uebersicht-51.html).
+This repository contains a `Dockerfile` for building a docker image containing the levigo [_jadice server_](https://jadice.com/produkte/server/).
 It is provided "as is", see [LICENSE.md](https://github.com/levigo/jadice-server-docker/blob/master/LICENSE.md).
-The image is based on openjdk:8u121-jre.
+The image is based on [openjdk:11.0.8-jre-buster](https://hub.docker.com/_/openjdk).
 
 ## Requirements
-You need version 5.5 or newer of the _jadice server_ distribution to use _jadice server_ in a docker container. For more information on how to get the _jadice server_ distribution visit [jadice.com](https://www.jadice.com).
-Also docker-engine 1.12 or newer is required, and for the use of docker-compose.yml version 1.0.8 or newer of docker-compose is required.
+* You need version 5.8.0.0 or newer of the _jadice server_ distribution to use _jadice server_ in a docker container with Java 11.
+For more information on how to get the _jadice server_ distribution visit [jadice.com](https://www.jadice.com).
+* docker-engine 17.06 or newer is required for building and running the Image.
+* docker-compose version 1.16.0 or newer for the use of docker-compose.yml.
+* For running jadice-server with Java 8 you can checkout the branch _java8_. This requires version 5.5 or newer of the _jadice server_ distribution.
 
 ## Building the Image
 * Copy the _jadice server_ distribution zip into the resources directory.
@@ -51,7 +54,7 @@ docker run -v <host-path>:/opt/jadice-server/logs <images-name>
 Also the logs are available over the docker logs functionality.
 
 ## docker-compose
-The `docker-compose.yml` shows an example implementation of the [Compose](https://docs.docker.com/compose/compose-file/) file for _jadice server_.
+The `docker-compose.yml` shows an example implementation of the [Compose](https://docs.docker.com/compose/compose-file/compose-file-v2/) file for _jadice server_.
 The docker-compose file defines three services:
 
 - js-amq - a _jadice server_ instance with only the embedded-broker activated
