@@ -1,6 +1,6 @@
-FROM openjdk:11.0.8-jre-buster as build-container
+FROM openjdk:11.0.16-jre-bullseye as build-container
 
-ADD resources/jadice-server*.zip /tmp/jadice-server.zip
+ADD resources/distribution*.zip /tmp/jadice-server.zip
 
 RUN mkdir /opt/jadice-server && \
     unzip -q /tmp/jadice-server.zip -d /opt/jadice-server/
@@ -22,7 +22,12 @@ RUN sed -i -e 's/\r$//' /opt/jadice-server/bin/*.sh
 #
 # Build resulting image
 #
-FROM openjdk:11.0.8-jre-buster
+FROM openjdk:11.0.16-jre-bullseye
+
+## un-comment the next two lines to install LibreOffice
+#RUN apt-get -qq -y update \
+#    && apt-get install -y xvfb libreoffice
+
 COPY --from=build-container /opt/jadice-server /opt/jadice-server
 
 WORKDIR /opt/jadice-server/bin
